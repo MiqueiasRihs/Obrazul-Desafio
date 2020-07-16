@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>App</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand"> <img src="{% static 'images/obrazul-logo-bg.png' %}" alt="Logo-Obrazul" id="logo"> </a>
+        <div class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" style="text-align: center;" placeholder="Produto" id="produto">
+            <button class="btn btn-outline-success my-2 my-sm-0" >Buscar</button>
+        </div>
+    </nav>
+    <header>
+        <img class="banner" src="{% static 'images/banner_products2.jpg' %}" alt="">
+    </header>
+
+    <section>
+        <div class="row" style="margin-top: 20px;">
+            <table class="table"> 
+                <tbody>
+                {% for key, value in dictionary.items %}
+                    {{value}}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <p>Desenvolvido por Miquéias Rihs</p>
+    </footer>
+</body>
+</html>
