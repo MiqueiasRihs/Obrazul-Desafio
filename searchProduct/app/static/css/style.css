@@ -1,13 +1,5 @@
 body {
-    background-color: white;
-}
-
-header {
-    background-color: white;
-}
-
-footer {
-    background-color: black;
+    font-family: 'Roboto', sans-serif;
 }
 
 #logo {
@@ -23,4 +15,28 @@ footer {
     height: auto;
     width: 100%;
     content: block;
+}
+
+.picProduct {
+    max-width:200px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+}
+
+.pic-price h6 {
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #F2F2F2;
+    font-weight: bolder;
+    text-align: center;
+
+}
+
+
+footer {
+    padding-bottom: 5px;
+    background-color: #F8F8F8;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
