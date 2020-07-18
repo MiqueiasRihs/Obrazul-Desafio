@@ -17,22 +17,30 @@ body {
     content: block;
 }
 
-.picProduct {
-    max-width:200px;
-    max-height:150px;
-    width: auto;
-    height: auto;
+.linha {
+    padding-top: 50px;
+    border-radius: 5px;
+}
+
+.pic-price {
+    margin-left: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .pic-price h6 {
     margin-top: 10px;
     border-radius: 5px;
-    background-color: #F2F2F2;
+    background-color: whitesmoke;
     font-weight: bolder;
     text-align: center;
-
 }
 
+.dataStore h4 {
+    font-size: 20px;
+    font-weight: bold;
+}
 
 footer {
     padding-bottom: 5px;
