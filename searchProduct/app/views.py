@@ -67,7 +67,6 @@ def filteringProduct(request):
 
     ## Pegando o valor inserido pelo usuario
     userInput = request.GET.get('searchField')
-    print("Essa foi a pesquisa -->> ", userInput) 
 
     ## Buscando url e atribuindo ela a variavel
     listProducts = dataFormat() 
