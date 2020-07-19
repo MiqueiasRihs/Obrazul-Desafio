@@ -17,6 +17,10 @@ body {
     content: block;
 }
 
+main {
+    padding-top: 50px;
+}
+
 .linha {
     padding-top: 50px;
     border-radius: 5px;

@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>App</title>
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-light bg-light">
+        <a class="navbar-brand" href="http://127.0.0.1:8000/"> <img src="{% static 'images/obrazul-logo-bg.png' %}"
+                alt="Logo-Obrazul" id="logo"> </a>
+        <form method="get" action="/produto/">
+            <div class="row">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="searchField" style="text-align: center;" size="54"
+                        placeholder="Pesquise aqui o produto ou a loja que procura">
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <button class="btn btn-primary btn-block" type="submit" value="submit" onclick="location.href='#main'"> Buscar</button>
+                </div>
+            </div>
+        </form>
+    </nav>
+
+    <header>
+        <img class="banner" src="{% static 'images/banner_products2.jpg' %}" alt="">
+    </header>
+
+    <main>
+        {% block conteudo %}
+
+        {% endblock conteudo %}
+    </main>
+
+    <footer>
+        <p>Desenvolvido por Miquéias Rihs Oliveira</p>
+    </footer>
+</body>
+
+</html>
