@@ -1,22 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block conteudo %}
-<div class="container" id="main">
-    {% for value in searchResult %}
-        <div class="row linha" id="showProduct">
-            <div class="pic-price col-4">
-                <img class="img-fluid" src="{{value.picture}}" alt="foto" style="width:100%;">
-                <h6>R${{value.price}}</h6>
-            </div>
-            <div class="dataStore col-8">
-                <h4>{{value.name}}</h4>
-                <hr>
-                <h5 style="font-weight: bolder;">{{value.storeName}}</h5>
-                {{value.storeAddress}} <br>
-                Tel:{{value.storePhone}}
-            </div>
-        </div> <br>
-        <hr>
-    {% endfor %}
-</div>
+<main>
+    <div class="container allContent" id="main">
+            <div class="row displayedContent">
+                {% if searchResult %}
+                    {% for value in searchResult %}
+                        
+                        <div class="col-lg-3">
+                            <div class="card h-100 border shadow-sm">
+                                <div class="card-body ">
+                                    <div class="pic-price">
+                                        <img class="card-img-top" src="{{value.picture}}" alt="foto" style="width:100%;">
+                                        <h6>R${{value.price}}</h6>
+                                    </div>
+                                    <div class="card-text dataStore">
+                                        <label class="nameProduct">{{value.name}}</label></h6>
+                                        <hr>
+                                        <label style="font-weight: bolder;">{{value.storeName}}</label> <br>
+                                        <label class="address" > {{value.storeAddress}} </label> <br>
+                                        <p style="font-weight: bold;">Tel:{{value.storePhone}}</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                {% else %}
+                    
+                    <div class="container allContent">
+                        <div class="notFound">
+                            <img src="{% static 'images/icons8-empty-box-50.png' %}">
+                            <h2>Nada encontrado</h2>
+                            <p>Tente buscar por outro produto ou loja.</p>
+                        </div>
+                    </div>
+
+                {% endif %}
+            </div> <br>
+    </div>
+</main>
 {% endblock conteudo %}

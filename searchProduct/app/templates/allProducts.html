@@ -1,24 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block conteudo %}
-<div class="container">
-    
-    {% for value in allProducts %}
-        <div class="row linha" id="showProduct">
-            <div class="pic-price col-4">
-                <img class="img-fluid" src="{{value.picture}}" alt="foto" style="width:100%;">
-                <h6>R${{value.price}}</h6>
-            </div>
-            <div class="dataStore col-8">
-                <h4>{{value.name}}</h4>
-                <hr>
-                <h5 style="font-weight: bolder;">{{value.storeName}}</h5>
-                {{value.storeAddress}} <br>
-                Tel:{{value.storePhone}}
-            </div>
-        </div> <br>
-        <hr>
-    {% endfor %}
-    
-</div>
+    <header>
+        <img class="banner" src="{% static 'images/banner_products2.jpg' %}" alt="">
+    </header>
+
+    <main>
+        <div class="container allContent" id="main">
+            <div class="row displayedContent">
+                {% for value in allProducts %}
+                    <div class="col-lg-3">
+                        <div class="card card h-100 border shadow-sm">
+                            <div class="card-body">
+                                <div class="pic-price">
+                                    <img class="card-img-top" src="{{value.picture}}" alt="foto" style="width:100%;">
+                                    <h6>R${{value.price}}</h6>
+                                </div>
+                                <div class="card-text dataStore">
+                                    <label class="nameProduct">{{value.name}}</label></h6>
+                                    <hr>
+                                    <label style="font-weight: bolder;">{{value.storeName}}</label> <br>
+                                    <label class="address" > {{value.storeAddress}} </label> <br>
+                                    <p style="font-weight: bold;">Tel:{{value.storePhone}}</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                {% endfor %}
+            </div> <br>
+    </div>
+    </main>
 {% endblock conteudo %}

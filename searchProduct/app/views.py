@@ -14,14 +14,11 @@ def bringProductList():
     return listProducts
 
 
-# -----------------------------------
-
-## Função para renderizar todos produtos
-def allProduct(request):
-
+## Função para formatar os dados da url
+def dataFormat():
     ## Definindo variaveis e arrays
     objPosition = 0
-    allProducts = []
+    formattedProduct = []
 
     ## Buscando url e atribuindo ela a variavel
     listProducts = bringProductList() 
@@ -36,6 +33,7 @@ def allProduct(request):
 
         eachProduct = {
         'name' : eachProduct["name"],
+        'fullname': eachProduct["fullname"],
         'price' : eachProduct["price"],
         'picture' : eachProduct["picture"],
         'price' : eachProduct["price"],
@@ -45,15 +43,22 @@ def allProduct(request):
         }
 
         ## Nova lista com todos os produtos que correspondem com o input do usuario
-        allProducts.append(eachProduct)
+        formattedProduct.append(eachProduct)
         objPosition += 1
+    
+    return formattedProduct
+
+
+## Função para renderizar todos produtos
+def allProduct(request):
+
+    allProducts = dataFormat()
+    
             
     return render(request, 'allProducts.html', {'allProducts': allProducts})
 
 
-# -----------------------------------
-
-## Função para filtrar os produtos de acordo com o input do usuario
+## Função para filtrar os produtos de acordo com o input do usuario e renderiza-los
 def filteringProduct(request):
 
     ## Definindo variaveis e arrays
@@ -61,36 +66,22 @@ def filteringProduct(request):
     searchResult = []
 
     ## Pegando o valor inserido pelo usuario
-    userInput = request.GET.get('searchField', None)
+    userInput = request.GET.get('searchField')
     print("Essa foi a pesquisa -->> ", userInput) 
 
     ## Buscando url e atribuindo ela a variavel
-    listProducts = bringProductList() 
+    listProducts = dataFormat() 
     
     ## Percorredendo o Array de objetos e buscando os dados de acordo com o input do usuario
     for obj in listProducts:
         selectedObject = listProducts[objPosition]
 
-        ## É verificado se o input do usuario corresponde com algo do fullname do produto ou com name da store e então o atribui a nova lista
+        ## É verificado se o input do usuario corresponde com algo do fullname do produto ou com name da loja e então o atribui a nova lista
         if(re.search(str(userInput), selectedObject["fullname"], re.IGNORECASE) 
-            or re.search(str(userInput), selectedObject["store"]["name"], re.IGNORECASE)):
-
-            store = selectedObject["store"]
-            storeLocation = store["location"]
-            storeAddress = "Rua: " + storeLocation["address"] + ", " + "Nº " + storeLocation["address_number"] + ", Bairro: " + storeLocation["neighborhood"] + " " + storeLocation["city"] + "-" + storeLocation["state"]
-
-            eachProduct = {
-            'name' : selectedObject["name"],
-            'price' : selectedObject["price"],
-            'picture' : selectedObject["picture"],
-            'price' : selectedObject["price"],
-            'storeName' : store["name"],
-            'storePhone' : store["phone"],
-            'storeAddress' : storeAddress
-            }
+            or re.search(str(userInput), selectedObject["storeName"], re.IGNORECASE)):
 
             ## Nova lista com todos os produtos que correspondem com o input do usuario
-            searchResult.append(eachProduct)
+            searchResult.append(selectedObject)
             objPosition += 1
 
         else:

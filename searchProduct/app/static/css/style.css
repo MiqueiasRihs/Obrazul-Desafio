@@ -1,5 +1,10 @@
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #1A62D6;
+}
+
+main {
+    padding-top: 50px;
 }
 
 #logo {
@@ -17,13 +22,27 @@ body {
     content: block;
 }
 
-main {
-    padding-top: 50px;
+.notFound {
+    margin-left: auto;
+    width: min-content;
+    text-align: center;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.linha {
+.allContent {
     padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.displayedContent {
+    padding-top: 30px;
+    padding-bottom: 30px;
     border-radius: 5px;
+    background-color: #F8F9FA;
 }
 
 .pic-price {
@@ -41,7 +60,17 @@ main {
     text-align: center;
 }
 
-.dataStore h4 {
+.nameProduct {
+    text-align: center;
+    font-size: 15px;
+}
+
+.address {
+    font-size: 12px;
+}
+
+
+.dataStore h6 {
     font-size: 20px;
     font-weight: bold;
 }
